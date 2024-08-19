@@ -58,9 +58,9 @@ We welcome contributions! Please follow these steps to contribute:
 
 ## Team
 
-### [Your Name](https://www.linkedin.com/in/yourprofile)
+### [Rohit Kumar](https://www.linkedin.com/in/rohit--kumar-/)
 ![Your Logo](https://path-to-your-logo.png)
-- **UID**: `your-uid`
+- **UID**: `21BCS4860`
 - **Role**: Lead Developer
 
 ### [Team Member Name](https://www.linkedin.com/in/team-member-profile)
