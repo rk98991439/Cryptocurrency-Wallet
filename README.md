@@ -1,50 +1,154 @@
-# React + TypeScript + Vite
+# Secure Cryptocurrency Wallet
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Overview
 
-Currently, two official plugins are available:
+Welcome to the **Secure Cryptocurrency Wallet** project! Our goal is to develop a robust and secure cryptocurrency wallet for seamless interaction with web3 applications. This wallet supports multiple cryptocurrencies and provides a user-friendly interface while ensuring top-notch security features.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Features
 
-## Expanding the ESLint configuration
+- **Multi-Currency Support**: Manage various cryptocurrencies and tokens.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- **Secure Private Key Management**: Use advanced encryption techniques to protect private keys.
 
-- Configure the top-level `parserOptions` property like this:
+- **Web3 Integration**: Interact with Ethereum and other blockchain networks.
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+- **Smart Contract Interaction**: Send transactions and query smart contract states.
+
+- **Two-Factor Authentication**: Enhance security with 2FA.
+
+- **Backup and Recovery**: Secure methods for wallet backup and recovery.
+
+
+## Setup and Contribution
+
+We welcome contributions! Please follow these steps to contribute:
+
+1\. **Fork and Clone the Repository:**
+
+   - Fork the repository on GitHub and clone it to your local machine.
+
+```bash
+
+   git clone https://github.com/your-username/Cryptocurrency-Wallet.git
+
+   cd secure-crypto-wallet
+
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+2\. **Create a New Branch:**
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+   - Use the appropriate branch naming convention based on the type of contribution.
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+### Branch Naming Conventions:
+
+   - **`feat/your-feature`**: For new features or enhancements.
+
+   - **`fix/your-bug-fix`**: For bug fixes.
+
+   - **`chore/your-chore`**: For maintenance tasks, updates, or other minor changes that don't affect the code's logic or features.
+
+   - **`refactor/your-refactor`**: For code refactoring, improving code structure or readability without altering its functionality.
+
+```bash
+
+   git checkout -b feat/your-feature
+
 ```
+
+3\. **Commit Your Changes:**
+
+   - Follow the commit message prefixes for consistency.
+
+   #### Commit Message Prefixes:
+
+   - **`feat: ---`**: For new features or functionality.
+
+   - **`fix: ---`**: For bug fixes.
+
+   - **`chore: ---`**: For maintenance tasks or updates.
+
+   - **`refactor: ---`**: For code refactoring.
+
+```bash
+
+   git commit -m "feat: describe your feature"
+
+```
+
+4\. **Push to Your Forked Repository:**
+
+```bash
+
+   git push origin feat/your-feature
+
+```
+
+5\. **Open a Pull Request:**
+
+   - Submit a pull request to the main repository for review.
+
+# Example Usage
+
+
+### Feature Branch Example:
+```bash
+- Branch Name: feat/add-user-authentication
+
+- Commit Message: feat: add user authentication system with JWT
+
+```
+### Bug Fix Branch Example:
+```bash
+
+- Branch Name: fix/login-bug
+
+- Commit Message: fix: resolve issue with login validation
+```
+### Chore Branch Example:
+```bash
+
+- Branch Name: chore/update-dependencies
+
+- Commit Message: chore: update npm dependencies to latest versions
+```
+
+### Refactor Branch Example:
+```bash
+- Branch Name: refactor/optimize-api-calls
+
+- Commit Message: refactor: optimize API call logic for better performance
+```
+
+## Team
+
+### [Rohit Kumar](https://www.linkedin.com/in/rohit--kumar-/)
+
+
+- **UID**: `21BCS4860`
+
+- **Role**: Lead Developer, Backend Developer
+
+### [Ayush Kathayat](https://github.com/Ayush-kathayat)
+
+
+- **UID**: `21BCS4922`
+
+- **Role**: Full Stack Developer
+
+### [Sutirtho Chakravorty](https://github.com/Sutirtho9)
+
+
+- **UID**: `21BCS4975`
+
+- **Role**: Frontend Developer
+
+### [Shashi Bala](https://github.com/Shashisxp)
+
+
+- **UID**: `21BCS4240`
+
+- **Role**: Frontend Developer
+
+---
+
+
