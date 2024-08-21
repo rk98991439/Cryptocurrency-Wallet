@@ -8,7 +8,12 @@
     --ye-breakpoint-xl: 1440px;
     --ye-breakpoint-xxl: 1920px;
     /* COLORS */
-
+    /* main color theme for our site*/
+    --text: oklch(94.24% 0.007 132.42);
+    --background: oklch(18.88% 0.015 131.99);
+    --primary: oklch(81.06% 0.063 131.11);
+    --secondary: oklch(56.52% 0.098 132.08);
+    --accent: oklch(77.57% 0.175 133.43);
     /* Opacity levels */
     --mix-opacity-1: 20%;
     --mix-opacity-2: 50%;
