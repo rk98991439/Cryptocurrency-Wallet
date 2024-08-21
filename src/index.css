@@ -1,18 +1,6 @@
-/* https://css-tricks.com/css-cascade-layers */
-
-@layer ye-reset,
-ye-defaults,
-ye-wrappers,
-ye-base-components,
-ye-components;
-@layer ye-structures,
-ye-templates,
-ye-overrides;
-@import url("normalize.css") layer(ye-reset);
 :root {
     /* ====== */
     /* BREAKPOINTS */
-    /* keep sync with './media.css' */
     --ye-breakpoint-xs: 360px;
     --ye-breakpoint-sm: 600px;
     --ye-breakpoint-md: 960px;
@@ -31,6 +19,7 @@ ye-overrides;
     --mix-opacity-2: 50%;
     --mix-opacity-3: 90%;
     --mix-opacity-4: 95%;
+    
     /* color definitions */
     --ye-color-light: oklch(97.78% 0 0deg);
     --ye-color-light-90: color-mix( in oklch, var(--ye-color-light), transparent 90%);
@@ -79,13 +68,14 @@ ye-overrides;
     --ye-gradient-button-tracker: radial-gradient( circle closest-side, var(--ye-color-shadow), transparent) center/15000%;
     --ye-gradient-button-ripple: var(--ye-color-ripple) radial-gradient(circle, transparent 1%, var(--ye-color-ripple) 1%) center/15000%;
     /* ====== */
+
     /* FONTS */
-    /* Make sure the fonts are imported in the appropriate html (.storybook/preview-head.html for storybook) */
     --ye-font-family-body: "Poppins", "Helvetica Neue", helvetica, arial, sans-serif;
     --ye-font-family-title: "Poppins", "Helvetica Neue", helvetica, arial, sans-serif;
     --ye-font-family-display: "Poppins", "Helvetica Neue", helvetica, arial, sans-serif;
     --ye-font-family-mono: source-code-pro, "Menlo", "Monaco", "Consolas", "Courier New", monospace;
     --ye-font-family-input: var(--ye-font-family-body);
+
     /* type scale 1.2 (https://type-scale.com/) */
     --ye-font-size-em: 1.2em;
     --ye-font-size-mammoth: 2.488rem;
@@ -97,9 +87,8 @@ ye-overrides;
     --ye-font-size-small: 0.833rem;
     --ye-font-size-xsmall: 0.694rem;
     --ye-font-size-tiny: 0.579rem;
-    /* line heights */
-    --ye-line-height: 1.5;
-    --ye-line-height-thin: 1.25;
+
+
     /* weights */
     --ye-font-weight-black: 700;
     --ye-font-weight-bold: 600;
@@ -108,6 +97,7 @@ ye-overrides;
     --ye-font-weight-light: 300;
     --ye-font-weight-thin: 200;
     /* ====== */
+
     /* SHADOWS */
     --ye-shadow-floating-highest: 0 2px 30px var(--ye-color-shadow);
     --ye-shadow-floating-high: 0 2px 12px var(--ye-color-shadow);
@@ -131,6 +121,7 @@ ye-overrides;
     --ye-shadow-input-focus-1: inset 0 0 0 var(--ye-color-shadow-inset);
     --ye-shadow-input-focus-2: 0 0 0 1px var(--ye-color-input-focus-shadow);
     /* ====== */
+
     /* SPACING */
     /* relative */
     --ye-em-unit: 0.125em;
@@ -144,6 +135,7 @@ ye-overrides;
     --ye-spacing-em-xlarge: calc(12 * var(--ye-em-unit));
     --ye-spacing-em-huge: calc(16 * var(--ye-em-unit));
     --ye-spacing-em-xhuge: calc(20 * var(--ye-em-unit));
+
     /* fixed */
     --ye-rem-unit: 0.125rem;
     --ye-rem-base: 1rem;
@@ -159,28 +151,12 @@ ye-overrides;
     --ye-gap-normal: 100px;
     /* sizes */
     --ye-size-hanging-logo: 7rem;
-    /* radii */
-    --ye-radius-tiny: var(--ye-em-unit);
-    --ye-radius-small: var(--ye-spacing-em-tiny);
-    --ye-radius-normal: var(--ye-spacing-em-xsmall);
-    --ye-radius-large: var(--ye-spacing-em-small);
-    --ye-radius-xlarge: var(--ye-spacing-em-normal);
-    --ye-radius-circle: 100%;
-    --ye-radius-ellipse: 50%;
+
     /* ====== */
     /* TRANSITIONS */
     --ye-transition-function: ease-in-out;
     --ye-transition-duration: 250ms;
-    /* ====== */
-    /* LAYOUTS */
-    --ye-layout-side-nav-offset: 0px;
-    --ye-layout-side-nav-width: 160px;
-    --ye-layout-side-nav-toggle-width: 56px;
-    /* HEIGHTS */
-    --ye-height-page-content: calc(100vh - 88px);
-    --ye-height-input: 2.5rem;
-    --ye-height-input-inner: calc(var(--ye-height-input) - 2px);
-    /* ====== */
+  
     /* BUTTONS */
     --ye-button-border-radius: 3em;
     --ye-button-border-width: 0px;
@@ -203,29 +179,10 @@ ye-overrides;
     --ye-input-padding-bottom: var(--ye-spacing-rem-small);
     --ye-input-padding-left: var(--ye-spacing-rem-normal);
     --ye-input-icon-width: calc( var(--ye-spacing-em-large) + var(--ye-spacing-rem-small));
-    /* FORM */
-    --ye-control-outline-border-width: 1px;
-    --ye-control-outline-padding: calc( var(--ye-spacing-em-small) - var(--ye-button-outline-border-width)) calc(var(--ye-spacing-em-normal) - var(--ye-button-outline-border-width));
-    --ye-input-border-width: 0px;
-    --ye-input-border-radius: 3em;
-    --ye-input-shadow: var(--ye-shadow-inset);
-    --ye-z-behind: -1;
-    --ye-z-base: 1;
-    --ye-z-topnav: 10;
-    --ye-z-modal: 101;
-    /* COMPONENTS SPECIFIC */
-    --ye-spinkit-size: 40px;
-    --ye-spinkit-color: var(--ye-color-dark-75);
-    /* TOPNAV */
-    --ye-topnav-expanded-color-bg: transparent;
-    /* stylelint-disable-next-line csstools/media-use-custom-media */
-    @media (width <=600px) {
-        --ye-layout-side-nav-width: 240px;
-        --ye-layout-side-nav-toggle-width: 0;
-    }
+
 }
 
-@layer ye-reset {
+
     * {
         box-sizing: border-box;
     }
@@ -277,7 +234,7 @@ ye-overrides;
     code {
         font-family: var(--ye-font-family-mono);
     }
-}
+
 
 .custom-scrollbar {
     /* SCROLLBAR */
