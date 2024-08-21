@@ -128,21 +128,21 @@ We welcome contributions! Please follow these steps to contribute:
 
 - **Role**: Lead Developer, Backend Developer
 
-### [Ayush Kathayat](https://github.com/Ayush-kathayat)
+### [Ayush Kathayat](https://www.linkedin.com/in/ayush-kathayat-306218248/)
 
 
 - **UID**: `21BCS4922`
 
 - **Role**: Full Stack Developer
 
-### [Sutirtho Chakravorty](https://github.com/Sutirtho9)
+### [Sutirtho Chakravorty](https://www.linkedin.com/in/sutirthochakravorty/)
 
 
 - **UID**: `21BCS4975`
 
 - **Role**: Frontend Developer
 
-### [Shashi Bala](https://github.com/Shashisxp)
+### [Shashi Bala](https://www.linkedin.com/in/bala-shashi-51249b219/)
 
 
 - **UID**: `21BCS4240`
