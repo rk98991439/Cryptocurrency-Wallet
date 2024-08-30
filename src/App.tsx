@@ -1,12 +1,10 @@
-import SignIn from "./Auth/SignIN";
-import SignUp from "./Auth/SignUP";
-
+import Auth from "./Auth/Auth";
+import "./App.scss";
 const App = () => {
   return (
-    <>
-      <SignIn />
-      <SignUp />
-    </>
+    <div className="app">
+      <Auth />;
+    </div>
   );
 };
 
