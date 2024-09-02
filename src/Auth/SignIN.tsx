@@ -3,7 +3,7 @@ import { zodResolver } from "@hookform/resolvers/zod"; // necessary for zod to w
 import { z } from "zod";
 import { useState } from "react";
 // import { useNavigate } from "react-router-dom";
-
+import React from "react";
 // import styles from "./SignIN.module.scss";
 
 import { toast } from "react-toastify";
@@ -11,6 +11,9 @@ import { Bounce } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 import { LineWave } from "react-loader-spinner";
+
+import styles from "./SignIN.module.scss";
+import clsx from "clsx";
 
 const loginSchema = z.object({
   username: z.string().email(),
@@ -57,21 +60,25 @@ const SignIn = () => {
   };
 
   return (
-    <div className="form-wrapper">
-      <form noValidate className="form" onSubmit={handleSubmit(onSubmit)}>
-        <h2 className="form-title">LOGIN</h2>
+    <div className={styles.formWrapper}>
+      <form
+        noValidate
+        className={styles.form}
+        onSubmit={handleSubmit(onSubmit)}
+      >
+        <h2 className={styles.formTitle}>LOGIN</h2>
         <input
-          className="input input-email"
+          className={clsx(styles.input, styles.inputEmail)}
           type="email"
           id="email"
           placeholder="Email"
           {...register("username")}
         />
         {errors.username && (
-          <p className="form-errors">{errors.username.message}</p>
+          <p className={styles.formErrors}>{errors.username.message}</p>
         )}
 
-        <div className="psswd-input">
+        <div className={styles.psswdInput}>
           <label>Password</label>
           <input
             type={showPassword ? "text" : "password"}
@@ -81,20 +88,22 @@ const SignIn = () => {
           {activeInputPassword &&
             (showPassword ? (
               <img
-                className="eye-icon"
+                className={styles.eyeIcon}
                 onClick={() => setShowPassword(!showPassword)}
                 src="./eye.svg"
                 alt="Hide password"
               />
             ) : (
               <img
-                className="eye-icon"
+                className={styles.eyeIcon}
                 onClick={() => setShowPassword(!showPassword)}
                 src="./eye-off.svg"
                 alt="Show password"
               />
             ))}
-          {errors.password && <p>{errors.password.message}</p>}
+          {errors.password && (
+            <p className={styles.formErrors}>{errors.password.message}</p>
+          )}
         </div>
 
         {isSubmitting ? (
@@ -112,7 +121,7 @@ const SignIn = () => {
           />
         ) : (
           <button
-            className="btn login-btn"
+            className={clsx(styles.btn, styles.loginBtn)}
             type="submit"
             disabled={isSubmitting}
           >
