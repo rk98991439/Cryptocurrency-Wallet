@@ -1,5 +1,8 @@
 import SignIn from "./SignIN";
 import SignUp from "./SignUP";
+import React from "react";
+
+import styles from "./Auth.module.scss";
 
 const Auth = () => {
   return (
@@ -54,8 +57,10 @@ const Auth = () => {
         
       </div> */}
 
-      <SignIn />
-      <SignUp />
+      <div className={styles.container}>
+        <SignIn />
+        <SignUp />
+      </div>
     </>
   );
 };
