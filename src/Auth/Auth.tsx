@@ -1,10 +1,15 @@
+import React from "react";
+import { useState } from "react";
+
 import SignIn from "./SignIN";
 import SignUp from "./SignUP";
-import React from "react";
+import AuthOverlay from "./AuthOverlay";
 
 import styles from "./Auth.module.scss";
 
 const Auth = () => {
+  const [isRightPanelActive, setIsRightPanelActive] = useState(false);
+
   return (
     <>
       {/* <div className="container" id="container">
@@ -52,15 +57,14 @@ const Auth = () => {
             <a href="#">Forgot your password?</a>
             <button type="submit">Login</button>
           </form>
-        </div>
-
-        
+        </div>        
       </div> */}
 
       <div className={styles.container}>
+        <SignUp panel={isRightPanelActive} />
         <SignIn />
-        <SignUp />
       </div>
+      <AuthOverlay setpanel={setIsRightPanelActive} />
     </>
   );
 };

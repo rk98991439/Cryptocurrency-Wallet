@@ -6,6 +6,7 @@ import { useState } from "react";
 import React from "react";
 import { toast } from "react-toastify";
 import { Bounce } from "react-toastify";
+import clsx from "clsx";
 import "react-toastify/dist/ReactToastify.css";
 
 import styles from "./SignUP.module.scss";
@@ -19,7 +20,11 @@ const signUpSchema = z.object({
 
 type T_SignUpFormData = z.infer<typeof signUpSchema>;
 
-const SignUp = () => {
+interface SignUpProps {
+  panel: boolean;
+}
+
+const SignUp = ({panel}: SignUpProps) => {
   const [showPassword, setShowPassword] = useState(false);
   const [activeInputPassword, setActiveInputPassword] = useState(false);
 
@@ -63,7 +68,7 @@ const SignUp = () => {
   };
 
   return (
-    <div className={styles.container}>
+    <div className={clsx(styles.formWrapper  , styles.signUpFormWrapper , (panel ? styles.rightSignUpPanelActive : null))}>
       <h1>Sign Up</h1>
       <form onSubmit={handleSubmit(onSubmit)}>
         <div>

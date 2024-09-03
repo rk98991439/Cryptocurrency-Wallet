@@ -1,3 +1,4 @@
+import React from "react";
 import Auth from "./Auth/Auth";
 import "./App.scss";
 const App = () => {

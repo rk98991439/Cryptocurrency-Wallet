@@ -1,7 +1,12 @@
+import React from "react";
 import clsx from "clsx";
 import styles from "./authOverlay.module.scss";
 
-const AuthOverlay = () => {
+interface AuthOverlayProps {
+  setpanel: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+const AuthOverlay = ({ setpanel }: AuthOverlayProps) => {
   return (
     <div className={styles.overlayContainer}>
       <div className={styles.overlay}>
@@ -17,7 +22,12 @@ const AuthOverlay = () => {
           <p className={styles.overlayPanelParagraph}>
             Enter your personal details and start journey with us!
           </p>
-          <button className={clsx(styles.ghost, styles.btn)}>Sign Up</button>
+          <button
+            className={clsx(styles.ghost, styles.btn)}
+            onClick={() => setpanel(true)}
+          >
+            Sign Up
+          </button>
         </div>
       </div>
     </div>
