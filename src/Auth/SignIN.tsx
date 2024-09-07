@@ -60,7 +60,7 @@ const SignIn = () => {
   };
 
   return (
-    <div className={styles.formWrapper}>
+    <div className={clsx(styles.formWrapper, styles.signInFormWrapper)}>
       <form
         noValidate
         className={styles.form}
