@@ -1,33 +1,33 @@
-import React from "react";
-import { useState } from "react";
-
-import SignIn from "./SignIN";
-import SignUp from "./SignUP";
-import AuthOverlay from "./AuthOverlay";
-
-import styles from "./Auth.module.scss";
+import { useState } from 'react';
+import clsx from 'clsx';
+import styles from './Auth.module.scss';
 
 const Auth = () => {
   const [isRightPanelActive, setIsRightPanelActive] = useState(false);
 
-  return (
-    <>
-      {/* <div className="container" id="container">
+  const handleSignUpClick = () => {
+    setIsRightPanelActive(true);
+  };
 
-        
-        <div className="form-container sign-up-container">
-          <form action="#" method="POST">
+  const handleSignInClick = () => {
+    setIsRightPanelActive(false);
+  };
+
+  const handleSignupSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    console.log('Signup form submitted');
+  }
+
+  return (
+    <div className={styles.wrapper}>
+      <div className={clsx(styles.container, { [styles.rightPanelActive]: isRightPanelActive })} id="container">
+        <div className={clsx(styles.formContainer, styles.signUpContainer)}>
+          <form action="Signup.php" method="POST" onSubmit={handleSignupSubmit}>
             <h1>Create Account</h1>
-            <div className="social-container">
-              <a href="#" className="social">
-                <i className="fab fa-facebook-f"></i>
-              </a>
-              <a href="#" className="social">
-                <i className="fab fa-google-plus-g"></i>
-              </a>
-              <a href="#" className="social">
-                <i className="fab fa-linkedin-in"></i>
-              </a>
+            <div className={styles.socialContainer}>
+              <a href="#" className={styles.social}><i className="fab fa-facebook-f"></i></a>
+              <a href="#" className={styles.social}><i className="fab fa-google-plus-g"></i></a>
+              <a href="#" className={styles.social}><i className="fab fa-linkedin-in"></i></a>
             </div>
             <span>or use your email for registration</span>
             <input type="text" placeholder="Name" />
@@ -37,19 +37,13 @@ const Auth = () => {
           </form>
         </div>
 
-        <div className="form-container sign-in-container">
-          <form action="#" method="POST">
+        <div className={clsx(styles.formContainer, styles.signInContainer)}>
+          <form action="Login.php" method="POST">
             <h1>Login</h1>
-            <div className="social-container">
-              <a href="#" className="social">
-                <i className="fab fa-facebook-f"></i>
-              </a>
-              <a href="#" className="social">
-                <i className="fab fa-google-plus-g"></i>
-              </a>
-              <a href="#" className="social">
-                <i className="fab fa-linkedin-in"></i>
-              </a>
+            <div className={styles.socialContainer}>
+              <a href="#" className={styles.social}><i className="fab fa-facebook-f"></i></a>
+              <a href="#" className={styles.social}><i className="fab fa-google-plus-g"></i></a>
+              <a href="#" className={styles.social}><i className="fab fa-linkedin-in"></i></a>
             </div>
             <span>or use your account</span>
             <input type="email" placeholder="Email" />
@@ -57,15 +51,24 @@ const Auth = () => {
             <a href="#">Forgot your password?</a>
             <button type="submit">Login</button>
           </form>
-        </div>        
-      </div> */}
+        </div>
 
-      <div className={styles.container}>
-        <SignUp panel={isRightPanelActive} />
-        <SignIn />
+        <div className={styles.overlayContainer}>
+          <div className={styles.overlay}>
+            <div className={clsx(styles.overlayPanel, styles.overlayLeft)}>
+              <h1>Welcome Back!</h1>
+              <p>To keep connected with us please login with your personal info</p>
+              <button className={styles.ghost} onClick={handleSignInClick} id="signIn">Login</button>
+            </div>
+            <div className={clsx(styles.overlayPanel, styles.overlayRight)}>
+              <h1>Hello, Friend!</h1>
+              <p>Enter your personal details and start journey with us</p>
+              <button className={styles.ghost} onClick={handleSignUpClick} id="signUp">Sign Up</button>
+            </div>
+          </div>
+        </div>
       </div>
-      <AuthOverlay setpanel={setIsRightPanelActive} />
-    </>
+    </div>
   );
 };
 
