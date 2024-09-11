@@ -9,21 +9,53 @@
 
 .container {
   background-color: var(--primary);
-  border-top-right-radius: 1rem;
-  border-bottom-right-radius: 1rem;
+  border-radius: 1rem;
   position: relative;
   overflow: hidden;
   width: 768px;
   max-width: 100%;
-  min-height: 480px;
+  min-height: 500px;
   transition: all 0.6s ease-in-out;
+}
+
+.socialContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--ye-spacing-rem-normal);
+  margin: var(--ye-spacing-rem-xhuge);
+}
+
+.signUpSocialContainer {
+  @extend .socialContainer;
+  margin-top: var(--ye-spacing-rem-small);;
+}
+
+.social {
+  border: 2px solid var(--ye-color-text);
+  padding: var(--ye-spacing-rem-large);
+  width: 50px; /* Adjust the width as needed */
+  height: 50px; /* Adjust the height as needed */
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.3s ease-in-out; /* Add transition for hover effect */
+
+  img {
+    transition: transform 0.3s ease-in-out; /* Add transition for hover effect */
+  }
+
+  &:hover img {
+    transform: scale(1.1); /* Scale the image on hover */
+  }
 }
 
 .formContainer {
   position: absolute;
   top: 0;
   height: 100%;
-
   transition: all 0.6s ease-in-out;
 }
 
@@ -31,6 +63,73 @@
   left: 0;
   width: 50%;
   z-index: 2;
+}
+
+.loginContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  align-content: center;
+  align-items: center;
+  margin: var(--ye-spacing-rem-xhuge);
+}
+
+.loginTitle {
+  font-size: var(--ye-font-size-mammoth);
+  font-weight: var(--ye-font-weight-bold);
+  color: var(--ye-color-text);
+}
+
+.signupTitle{
+  @extend .loginTitle;
+
+}
+
+.loginEmailInput {
+  width: 95%;
+  height: 3rem;
+  border: 2px solid var(--ye-color-text);
+  border-radius: var(--ye-button-border-radius);
+  padding: var(--ye-input-padding);
+  margin-bottom: var(--ye-spacing-rem-xhuge);
+  font-size: var(--ye-font-size-normal);
+}
+
+.loginPsswdInput {
+  @extend .loginEmailInput;
+}
+
+.signUpPsswdInput {
+  @extend .loginPsswdInput;
+  margin-bottom: var(--ye-spacing-rem-normal);;
+
+}
+
+.loginBtn {
+  width: 45%;
+  height: 3rem;
+  border: 2px solid var(--ye-color-text);
+  border-radius: var(--ye-button-border-radius);
+  padding: var(--ye-input-padding);
+  margin-bottom: var(--ye-spacing-rem-xhuge);
+  font-size: var(--ye-font-size-large);
+  background-color: var(--accent);
+  color: var(--ye-color-text);
+  cursor: var(--ye-button-cursor);
+  transition: background-color 0.3s ease-in-out; /* Add transition */
+
+  &:hover {
+    background-color: var(--secondary);
+    color: var(--text);
+  }
+}
+
+.signUpBtn{
+
+  @extend .loginBtn;
+  margin-bottom:0;
+
 }
 
 .rightPanelActive .signInContainer {
@@ -45,6 +144,9 @@
   z-index: 1;
 }
 
+.signinUserName {
+  @extend .loginEmailInput;
+}
 .rightPanelActive .signUpContainer {
   transform: translateX(100%);
   opacity: 1;
@@ -128,4 +230,36 @@
 
 .rightPanelActive .overlayRight {
   transform: translateX(20%);
+}
+
+.welcomeText{
+  font-size: var(--ye-font-size-mammoth);
+  font-weight: var(--ye-font-weight-bold);
+  color: var(--text);
+  margin-bottom: var(--ye-spacing-rem-xhuge);
+}
+
+.welcomePara{
+  font-size: var(--ye-font-size-large);
+  font-weight: var(--ye-font-weight-normal);
+  color: var(--text);
+}
+
+.ghost{
+  width: 45%;
+  height: 3rem;
+  border: 2px solid var(--ye-color-text);
+  border-radius: var(--ye-button-border-radius);
+  padding: var(--ye-input-padding);
+  margin: var(--ye-spacing-rem-xhuge);
+  font-size: var(--ye-font-size-large);
+  background-color: var(--primary);
+  color: var(--ye-color-text);
+  cursor: var(--ye-button-cursor);
+  transition: background-color 0.3s ease-in-out; /* Add transition */
+
+  &:hover {
+    background-color: var(--secondary);
+    color: var(--text);
+  }
 }

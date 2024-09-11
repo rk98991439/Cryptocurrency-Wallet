@@ -10,14 +10,11 @@
     /* COLORS */
     /* main color theme for our site*/
 
-    --text: oklch(20.14% 0.030 146.17);
-    --background: oklch(98.00% 0.008 145.51);
-    --primary: oklch(68.92% 0.125 147.53);
-    --secondary: oklch(81.61% 0.055 172.44);
-    --accent: oklch(75.75% 0.065 189.59);
-    
-    
-    
+    --text: oklch(96.81% 0.021 109.69);
+    --background: oklch(18.16% 0.023 112.48);
+    --primary: oklch(87.21% 0.085 111.72);
+    --secondary: oklch(50.96% 0.105 153.64);
+    --accent: oklch(74.15% 0.105 180.23);
 
     /* Opacity levels */
     --mix-opacity-1: 20%;
@@ -189,6 +186,7 @@
     --ye-input-padding-right: var(--ye-spacing-rem-normal);
     --ye-input-padding-bottom: var(--ye-spacing-rem-small);
     --ye-input-padding-left: var(--ye-spacing-rem-normal);
+    --ye-input-padding: var(--ye-spacing-rem-small) var(--ye-spacing-rem-normal) var(--ye-spacing-rem-small) var(--ye-spacing-rem-normal);
     --ye-input-icon-width: calc(var(--ye-spacing-em-large) + var(--ye-spacing-rem-small));
 }
 
