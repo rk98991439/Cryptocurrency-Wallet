@@ -9,28 +9,30 @@
     --ye-breakpoint-xxl: 1920px;
     /* COLORS */
     /* main color theme for our site*/
-    --text: oklch(94.24% 0.007 132.42);
-    --background: oklch(18.88% 0.015 131.99);
-    --primary: oklch(81.06% 0.063 131.11);
-    --secondary: oklch(56.52% 0.098 132.08);
-    --accent: oklch(77.57% 0.175 133.43);
+
+    --text: oklch(96.81% 0.021 109.69);
+    --background: oklch(18.16% 0.023 112.48);
+    --primary: oklch(87.21% 0.085 111.72);
+    --secondary: oklch(50.96% 0.105 153.64);
+    --accent: oklch(74.15% 0.105 180.23);
+
     /* Opacity levels */
     --mix-opacity-1: 20%;
     --mix-opacity-2: 50%;
     --mix-opacity-3: 90%;
     --mix-opacity-4: 95%;
-    
+
     /* color definitions */
     --ye-color-light: oklch(97.78% 0 0deg);
-    --ye-color-light-90: color-mix( in oklch, var(--ye-color-light), transparent 90%);
-    --ye-color-light-75: color-mix( in oklch, var(--ye-color-light), transparent var(--mix-opacity-1));
-    --ye-color-light-50: color-mix( in oklch, var(--ye-color-light), transparent var(--mix-opacity-2));
-    --ye-color-light-10: color-mix( in oklch, var(--ye-color-light), transparent var(--mix-opacity-3));
+    --ye-color-light-90: color-mix(in oklch, var(--ye-color-light), transparent 90%);
+    --ye-color-light-75: color-mix(in oklch, var(--ye-color-light), transparent var(--mix-opacity-1));
+    --ye-color-light-50: color-mix(in oklch, var(--ye-color-light), transparent var(--mix-opacity-2));
+    --ye-color-light-10: color-mix(in oklch, var(--ye-color-light), transparent var(--mix-opacity-3));
     --ye-color-dark: oklch(0% 0 0deg);
-    --ye-color-dark-5: color-mix( in oklch, var(--ye-color-dark), transparent var(--mix-opacity-4));
-    --ye-color-dark-10: color-mix( in oklch, var(--ye-color-dark), transparent var(--mix-opacity-3));
-    --ye-color-dark-50: color-mix( in oklch, var(--ye-color-dark), transparent var(--mix-opacity-2));
-    --ye-color-dark-75: color-mix( in oklch, var(--ye-color-dark), transparent var(--mix-opacity-1));
+    --ye-color-dark-5: color-mix(in oklch, var(--ye-color-dark), transparent var(--mix-opacity-4));
+    --ye-color-dark-10: color-mix(in oklch, var(--ye-color-dark), transparent var(--mix-opacity-3));
+    --ye-color-dark-50: color-mix(in oklch, var(--ye-color-dark), transparent var(--mix-opacity-2));
+    --ye-color-dark-75: color-mix(in oklch, var(--ye-color-dark), transparent var(--mix-opacity-1));
     --ye-color-accent: oklch(64.78% 0.245 312.5deg / 0.75);
     --ye-color-accent-dark: oklch(32% 0.082 332.8deg);
     --ye-color-accent-light: oklch(88.11% 0.109 73deg);
@@ -49,13 +51,17 @@
     --ye-color-text: var(--ye-color-dark);
     --ye-color-text-light: var(--ye-color-dark-50);
     --ye-color-text-anchor: oklch(64.78% 0.191 252.8deg);
-    --ye-color-input-background: color-mix( in oklch, var(--ye-color-dark), transparent 97.5%);
+    --ye-color-input-background: color-mix(in oklch, var(--ye-color-dark), transparent 97.5%);
     --ye-color-input-border: var(--ye-color-input-background);
     --ye-color-input-focus-background: var(--ye-color-light);
     --ye-color-input-focus-placeholder: var(--ye-color-light);
     --ye-color-bg-scrollbar: var(--ye-color-light);
     --ye-color-input-focus-border: oklch(74.22% 0.158 247.3deg);
-    --ye-color-input-focus-shadow: color-mix( in oklch, var(--ye-color-input-focus-border), transparent var(--mix-opacity-1));
+    --ye-color-input-focus-shadow: color-mix(
+        in oklch,
+        var(--ye-color-input-focus-border),
+        transparent var(--mix-opacity-1)
+    );
     --ye-shadow-error: 0 0 0 1px var(--ye-color-negative);
     --ye-color-neu-background-dark: oklch(88.11% 0.001 286.4deg);
     --ye-color-neu-background-light: var(--ye-color-light);
@@ -65,8 +71,10 @@
     --ye-color-text-anchor-visited: oklch(39.44% 0.112 247.4deg);
     --ye-color-text-content: var(--ye-color-dark);
     --ye-color-disabled-button: oklch(46.89% 0.033 246.9deg);
-    --ye-gradient-button-tracker: radial-gradient( circle closest-side, var(--ye-color-shadow), transparent) center/15000%;
-    --ye-gradient-button-ripple: var(--ye-color-ripple) radial-gradient(circle, transparent 1%, var(--ye-color-ripple) 1%) center/15000%;
+    --ye-gradient-button-tracker: radial-gradient(circle closest-side, var(--ye-color-shadow), transparent)
+        center/15000%;
+    --ye-gradient-button-ripple: var(--ye-color-ripple)
+        radial-gradient(circle, transparent 1%, var(--ye-color-ripple) 1%) center/15000%;
     /* ====== */
 
     /* FONTS */
@@ -87,7 +95,6 @@
     --ye-font-size-small: 0.833rem;
     --ye-font-size-xsmall: 0.694rem;
     --ye-font-size-tiny: 0.579rem;
-
 
     /* weights */
     --ye-font-weight-black: 700;
@@ -156,7 +163,7 @@
     /* TRANSITIONS */
     --ye-transition-function: ease-in-out;
     --ye-transition-duration: 250ms;
-  
+
     /* BUTTONS */
     --ye-button-border-radius: 3em;
     --ye-button-border-width: 0px;
@@ -165,8 +172,9 @@
     --ye-button-focus-shadow: var(--ye-shadow-pressed);
     --ye-button-font-weight: var(--ye-font-weight-semibold);
     --ye-button-hover-shadow: var(--ye-shadow-hovered);
-    --ye-button-padding: calc( var(--ye-spacing-rem-small) - var(--ye-button-border-width)) var(--ye-spacing-em-large);
-    --ye-button-outline-padding: calc( var(--ye-spacing-rem-small) - var(--ye-button-outline-border-width)) var(--ye-spacing-em-large);
+    --ye-button-padding: calc(var(--ye-spacing-rem-small) - var(--ye-button-border-width)) var(--ye-spacing-em-large);
+    --ye-button-outline-padding: calc(var(--ye-spacing-rem-small) - var(--ye-button-outline-border-width))
+        var(--ye-spacing-em-large);
     --ye-button-shadow: var(--ye-shadow-pressable);
     --ye-effect-ripple-diameter: 0px;
     --ye-effect-ripple-x: 0px;
@@ -178,65 +186,63 @@
     --ye-input-padding-right: var(--ye-spacing-rem-normal);
     --ye-input-padding-bottom: var(--ye-spacing-rem-small);
     --ye-input-padding-left: var(--ye-spacing-rem-normal);
-    --ye-input-icon-width: calc( var(--ye-spacing-em-large) + var(--ye-spacing-rem-small));
-
+    --ye-input-padding: var(--ye-spacing-rem-small) var(--ye-spacing-rem-normal) var(--ye-spacing-rem-small) var(--ye-spacing-rem-normal);
+    --ye-input-icon-width: calc(var(--ye-spacing-em-large) + var(--ye-spacing-rem-small));
 }
 
-
-    * {
-        box-sizing: border-box;
-        margin : 0;
-        padding: 0;
-    }
-    html,
-    body {
-        min-height: 100%;
-    }
-    html {
-        background-color: var(--ye-color-background);
-    }
-    body {
-        overflow-x: hidden;
-        font-family: var(--ye-font-family-body);
-        font-size: var(--ye-font-size-normal);
-        /* stylelint-disable-next-line declaration-property-value-allowed-list */
-        font-size: clamp(100%, 1rem + 2vw, var(--ye-font-size-normal));
-        font-weight: var(--ye-font-weight-normal);
-        line-height: var(--ye-line-height);
-        color: var(--ye-color-text);
-        background-color: var(--ye-color-background);
-    }
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6 {
-        font-family: var(--ye-font-family-display);
-        font-weight: var(--ye-font-weight-bold);
-    }
-    h1 {
-        font-size: var(--ye-font-size-mammoth);
-    }
-    h2 {
-        font-size: var(--ye-font-size-xhuge);
-    }
-    h3 {
-        font-size: var(--ye-font-size-huge);
-    }
-    h4 {
-        font-size: var(--ye-font-size-xlarge);
-    }
-    h5 {
-        font-size: var(--ye-font-size-large);
-    }
-    h6 {
-        font-size: var(--ye-font-size-normal);
-    }
-    code {
-        font-family: var(--ye-font-family-mono);
-    }
-
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+html,
+body {
+    min-height: 100%;
+}
+html {
+    background-color: var(--ye-color-background);
+}
+body {
+    overflow-x: hidden;
+    font-family: var(--ye-font-family-body);
+    font-size: var(--ye-font-size-normal);
+    /* stylelint-disable-next-line declaration-property-value-allowed-list */
+    font-size: clamp(100%, 1rem + 2vw, var(--ye-font-size-normal));
+    font-weight: var(--ye-font-weight-normal);
+    line-height: var(--ye-line-height);
+    color: var(--ye-color-text);
+    background-color: var(--ye-color-background);
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: var(--ye-font-family-display);
+    font-weight: var(--ye-font-weight-bold);
+}
+h1 {
+    font-size: var(--ye-font-size-mammoth);
+}
+h2 {
+    font-size: var(--ye-font-size-xhuge);
+}
+h3 {
+    font-size: var(--ye-font-size-huge);
+}
+h4 {
+    font-size: var(--ye-font-size-xlarge);
+}
+h5 {
+    font-size: var(--ye-font-size-large);
+}
+h6 {
+    font-size: var(--ye-font-size-normal);
+}
+code {
+    font-family: var(--ye-font-family-mono);
+}
 
 .custom-scrollbar {
     /* SCROLLBAR */
