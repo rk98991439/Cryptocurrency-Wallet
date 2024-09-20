@@ -1,5 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Auth from "./Auth/Auth";
+
+import LandingPage from "./pages/LandinPage";
 import "./App.scss";
 const App = () => {
   return (
@@ -13,6 +15,9 @@ const App = () => {
             </div>
           }
         />
+      </Routes>
+      <Routes>
+        <Route path="/" element={<LandingPage />} />
       </Routes>
     </Router>
   );

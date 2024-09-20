@@ -1,0 +1,35 @@
+.landingPage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: var(--background);
+}
+
+.title {
+  font-size: var(--ye-font-size-mammoth);
+  font-family: var(--ye-font-family-mono);
+  color: var(--text);
+  margin: var(--ye-spacing-em-normal);
+  text-transform: uppercase;
+  letter-spacing: var(--ye-spacing-em-tiny);
+}
+
+.authBtn {
+  padding: var(--ye-button-padding);
+  font-size: var(--ye-font-size-normal);
+  background-color: var(--primary);
+  cursor: var(--ye-button-cursor);
+  height: 3rem;
+  width: 6rem;
+  border: 2px solid var(--primary);
+  border-radius: var(--ye-button-border-radius);
+  transition: all 0.3s ease-in-out;
+
+  &:hover {
+    color: var(--primary);
+    background-color: var(--primary-hover);
+    transition: all 0.3s ease-in-out;
+  }
+}
