@@ -151,7 +151,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
       console.log(" User logged out Successfully");
       // Delay the navigation by 2.5 seconds to allow the toast to be displayed
       setTimeout(() => {
-        navigate("/login");
+        navigate("/auth");
       }, 2500);
     } catch (error) {
       console.log(error);

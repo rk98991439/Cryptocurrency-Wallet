@@ -5,6 +5,7 @@ import Auth from "./Auth/Auth";
 import { AuthProvider } from "./Auth/AuthContext";
 
 import LandingPage from "./pages/LandinPage";
+import Home from "./pages/Home";
 import "./App.scss";
 const App = () => {
   return (
@@ -20,6 +21,7 @@ const App = () => {
             }
           />
           <Route path="/" element={<LandingPage />} />
+          <Route path="/home" element={<Home />} />
         </Routes>
       </AuthProvider>
     </Router>
