@@ -1,0 +1,28 @@
+.homePage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: #f5f5f5;
+}
+
+.greet {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+
+  span {
+    color: #007bff;
+  }
+}
+
+.logoutBtn {
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
