@@ -1,9 +1,79 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import clsx from "clsx";
 import styles from "./Auth.module.scss";
 
+import { AuthContext } from "./AuthContext";
+
 const Auth = () => {
   const [isRightPanelActive, setIsRightPanelActive] = useState(false);
+  //! states for signup form
+  const [signUpName, setSignUpName] = useState("");
+  const [signUpEmail, setSignUpEmail] = useState("");
+  const [signUpPassword, setSignUpPassword] = useState("");
+
+  //! states for login form
+  const [loginEmail, setLoginEmail] = useState("");
+  const [loginPassword, setLoginPassword] = useState("");
+
+  //! consuming the context
+
+  const context = useContext(AuthContext);
+
+  const { signup, login } = context!;
+
+  const handleSignupSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    //! handling the validation OF THE DATA coming from the form
+    if (!signUpName || !signUpEmail || !signUpPassword) {
+      alert("All fields are required.");
+      return;
+    }
+
+    //! Email validation regex
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(signUpEmail)) {
+      alert("Invalid email format.");
+      return;
+    }
+
+    //! calling the signup function from the context
+    signup({
+      username: signUpEmail,
+      password: signUpPassword,
+      name: signUpName,
+    });
+
+    //! clearing the form fields
+    setSignUpName("");
+    setSignUpEmail("");
+    setSignUpPassword("");
+  };
+
+  const handleLoginSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    //! handling the validation OF THE DATA coming from the form
+    if (!loginEmail || !loginPassword) {
+      alert("All fields are required.");
+      return;
+    }
+
+    //! Email validation regex
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(loginEmail)) {
+      alert("Invalid email format.");
+      return;
+    }
+
+    //! calling the login function from the context
+    login({
+      username: loginEmail,
+      password: loginPassword,
+    });
+
+    //! clearing the form fields
+    setLoginEmail("");
+    setLoginPassword("");
+  };
 
   const handleSignUpClick = () => {
     setIsRightPanelActive(true);
@@ -11,11 +81,6 @@ const Auth = () => {
 
   const handleSignInClick = () => {
     setIsRightPanelActive(false);
-  };
-
-  const handleSignupSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    console.log("Signup form submitted");
   };
 
   return (
@@ -27,12 +92,7 @@ const Auth = () => {
         id="container"
       >
         <div className={clsx(styles.formContainer, styles.signUpContainer)}>
-          <form
-            action="Signup.php"
-            method="POST"
-            onSubmit={handleSignupSubmit}
-            className={styles.loginContainer}
-          >
+          <form onSubmit={handleSignupSubmit} className={styles.loginContainer}>
             <h1 className={styles.signupTitle}>Create Account</h1>
             <div className={styles.signUpSocialContainer}>
               <a href="#" className={styles.social}>
@@ -49,16 +109,22 @@ const Auth = () => {
               className={styles.signinUserName}
               type="text"
               placeholder="Name"
+              value={signUpName}
+              onChange={(e) => setSignUpName(e.target.value)}
             />
             <input
               className={styles.loginEmailInput}
               type="email"
               placeholder="Email"
+              value={signUpEmail}
+              onChange={(e) => setSignUpEmail(e.target.value)}
             />
             <input
               className={styles.signUpPsswdInput}
               type="password"
               placeholder="Password"
+              value={signUpPassword}
+              onChange={(e) => setSignUpPassword(e.target.value)}
             />
             <button className={styles.signUpBtn} type="submit">
               Sign Up
@@ -67,11 +133,7 @@ const Auth = () => {
         </div>
 
         <div className={clsx(styles.formContainer, styles.signInContainer)}>
-          <form
-            action="Login.php"
-            method="POST"
-            className={styles.loginContainer}
-          >
+          <form onSubmit={handleLoginSubmit} className={styles.loginContainer}>
             <h1 className={styles.loginTitle}>Login</h1>
             <div className={styles.socialContainer}>
               <a href="#" className={styles.social}>
@@ -88,11 +150,15 @@ const Auth = () => {
               className={styles.loginEmailInput}
               type="email"
               placeholder="Email"
+              value={loginEmail}
+              onChange={(e) => setLoginEmail(e.target.value)}
             />
             <input
               className={styles.loginPsswdInput}
               type="password"
               placeholder="Password"
+              value={loginPassword}
+              onChange={(e) => setLoginPassword(e.target.value)}
             />
             <button type="submit" className={styles.loginBtn}>
               Login
