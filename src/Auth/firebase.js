@@ -2,15 +2,18 @@
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 const firebaseConfig = {
-  apiKey: "AIzaSyD9d2BwA-sqC50UEcYrM83yk5ZXFCSnqYg",
-  authDomain: "crypto-wallet-736b2.firebaseapp.com",
-  projectId: "crypto-wallet-736b2",
-  storageBucket: "crypto-wallet-736b2.appspot.com",
-  messagingSenderId: "321751462908",
-  appId: "1:321751462908:web:9a1198244ca45c7ceab879",
-  measurementId: "G-1NZ28WFVS0",
+  apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
+  authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
+  projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
+  storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
+  appId: process.env.REACT_APP_FIREBASE_APP_ID,
+  measurementId: process.env.REACT_APP_FIREBASE_MEASUREMENT_ID,
 };
 
 // Initialize Firebase
