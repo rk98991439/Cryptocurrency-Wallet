@@ -1,4 +1,3 @@
-// AuthContext.jsx
 import React, { createContext, useEffect, useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 
@@ -85,12 +84,10 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
           username: data.name,
         });
       }
-      notifySuccess("Registration Successfull");
+      notifySuccess(
+        "Registration successful! You can now log in to your account."
+      );
 
-      // Delay the navigation by 2.5 seconds to allow the toast to be displayed
-      setTimeout(() => {
-        navigate("/login");
-      }, 1500);
       console.log("User created successfully");
     } catch (error) {
       notifyError("Registration Failed");
