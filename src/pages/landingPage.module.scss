@@ -1,16 +1,85 @@
+/* Navigation Bar Styles */
+.navbar {
+  width: 100%;
+  background-color: var(--background);
+  padding: 1rem 0;
+}
+
+.navContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 90%;
+  margin: 0 auto;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+
+  a {
+    font-size: var(--ye-font-size-normal);
+    color: var(--text);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+  }
+}
+
+.logoImage {
+  width: 40px;
+  margin-right: 10px;
+}
+
+.navLinks {
+  list-style: none;
+  display: flex;
+  gap: 1rem; /* Increase gap between the items */
+}
+
+.navLinks li a {
+  text-decoration: none;
+  color: var(--text);
+  font-size: 1.2rem; /* Increase font size */
+  padding: 0.5rem 1rem; /* Add padding around links */
+  transition: color 0.3s ease;
+}
+
+.navLinks li a:hover {
+  color: var(--primary);
+}
+
+
+/* Container for Slider and Main Content */
+.contentContainer {
+  display: flex;
+  height: 93vh; /* Full viewport height */
+  background-color: var(--background); /* Set background color for the whole container */
+}
+
+/* Floating Animation */
+@keyframes float {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-30px); }
+  100% { transform: translateY(0); }
+}
+
+/* Landing Page Main Styles */
 .landingPage {
+  flex: 0 0 60%; /* 40% for the left side */
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  height: 100vh;
-  background-color: var(--background);
+  justify-content: center; /* Center content vertically */
+  background-color: var(--background); /* Set left background color */
+  padding: 10px; /* Add padding as needed */
+  text-align: center; /* Center text */
 }
 
 .title {
   font-size: var(--ye-font-size-mammoth);
   font-family: var(--ye-font-family-mono);
-  color: var(--text);
+  color: var(--theme-color); /* Use theme color */
   margin: var(--ye-spacing-em-normal);
   text-transform: uppercase;
   letter-spacing: var(--ye-spacing-em-tiny);
@@ -32,4 +101,28 @@
     background-color: var(--primary-hover);
     transition: all 0.3s ease-in-out;
   }
+}
+
+.sliderSection {
+  flex: 0 0 30%; /* 60% for the right side */
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Center content horizontally */
+  background-color: var(--background); /* Set right background color */
+  padding: 45px 0 145px 0;
+  box-sizing: border-box;
+}
+
+.imgBox img {
+  width: 100%; /* Adjust the size as needed, increase for larger image */
+  max-width: 400px; /* Maximum size for responsiveness */
+  animation: float 2s ease-in-out infinite; /* Apply float animation */
+}
+
+.bouncingImage {
+  animation: bounce 1s infinite; /* Original bounce animation can be kept if needed */
+}
+
+.detailBox {
+  text-align: center; /* Center text in detail box */
 }
