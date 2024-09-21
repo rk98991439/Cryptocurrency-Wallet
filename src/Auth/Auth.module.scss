@@ -23,9 +23,10 @@
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
-  gap: var(--ye-spacing-rem-normal);
-  margin: var(--ye-spacing-rem-xhuge);
+  gap: var(--ye-spacing-rem-normal); /* Keep the gap between social icons */
+  margin: var(--ye-spacing-rem-small); /* Reduce the large margin */
 }
+
 
 .signUpSocialContainer {
   @extend .socialContainer;
@@ -56,7 +57,11 @@
   position: absolute;
   top: 0;
   height: 100%;
+  width: 50%;
   transition: all 0.6s ease-in-out;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .signInContainer {
@@ -92,7 +97,7 @@
   border: 2px solid var(--ye-color-text);
   border-radius: var(--ye-button-border-radius);
   padding: var(--ye-input-padding);
-  margin-bottom: var(--ye-spacing-rem-xhuge);
+  margin-bottom: var(--ye-spacing-rem-small);
   font-size: var(--ye-font-size-normal);
 }
 
@@ -262,4 +267,19 @@
     background-color: var(--secondary);
     color: var(--text);
   }
+}
+
+
+/// extra
+/// 
+
+// Add space above and below span and a elements
+.textMessage {
+  display: block; /* Ensure the span takes full width */
+  margin: var(--ye-spacing-rem-small) 0; /* Adjust spacing above and below */
+}
+
+.forgotPassword {
+  display: block; /* Ensure the a element takes full width */
+  margin: var(--ye-spacing-rem-small) 0; /* Adjust spacing above and below */
 }
