@@ -1,0 +1,52 @@
+/* Navbar.module.scss */
+
+.navbar {
+    width: 100%;
+    background-color: var(--background);
+    padding: 1rem 0;
+  }
+  
+  .navContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    margin: 0 auto;
+  }
+  
+  .logo {
+    display: flex;
+    align-items: center;
+  
+    a {
+      font-size: var(--ye-font-size-normal);
+      color: var(--text);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+    }
+  }
+  
+  .logoImage {
+    width: 40px;
+    margin-right: 10px;
+  }
+  
+  .navLinks {
+    list-style: none;
+    display: flex;
+    gap: 1rem; /* Increase gap between the items */
+  }
+  
+  .navLinks li a {
+    text-decoration: none;
+    color: var(--text);
+    font-size: 1.2rem; /* Increase font size */
+    padding: 0.5rem 1rem; /* Add padding around links */
+    transition: color 0.3s ease;
+  }
+  
+  .navLinks li a:hover {
+    color: var(--primary);
+  }
+  

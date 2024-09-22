@@ -2,19 +2,70 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  height: 100vh;
+  justify-content: flex-start; /* Align items at the start */
   background-color: #f5f5f5;
+  padding: 1rem; /* Add padding to the entire page */
+  height: 100vh; /* Set height to full viewport */
 }
 
 .greet {
   font-size: 2rem;
   font-weight: 700;
-  margin-bottom: 1rem;
+  margin: 0; /* Remove margins for consistency */
+  text-align: center;
 
   span {
     color: #007bff;
   }
+}
+
+.content {
+  display: flex;
+  width: 100%;
+  max-width: 1200px; // Adjust as needed
+  margin-top: 1rem; /* Space between greeting and content */
+}
+
+.contacts, .wallet {
+  flex: 1;
+  background-color: #fff;
+  padding: 1rem;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin: 0 0.5rem; /* Adjust space between the two sections */
+}
+
+.searchBar {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.cryptoSelection {
+  margin: 1rem 0;
+}
+
+.transactionForm {
+  display: flex;
+  flex-direction: column;
+  margin-top: 1rem;
+}
+
+.transactionForm input {
+  margin-bottom: 0.5rem;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.sendBtn {
+  padding: 0.5rem;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
 .logoutBtn {
@@ -25,4 +76,69 @@
   border: none;
   border-radius: 5px;
   cursor: pointer;
+}
+
+.transactionList {
+  list-style-type: none;
+  padding: 0;
+}
+
+.transactionItem {
+  background-color: #f0f8ff;
+  padding: 1rem;
+  margin: 0.5rem 0;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.transactionDetails {
+  display: flex;
+  flex-direction: column;
+
+  p {
+    margin: 0; // Remove extra margin for no space above/below
+  }
+
+  .transactionInfo {
+    display: flex;
+    justify-content: space-between; /* Aligns Type and Amount to edges */
+    align-items: center; /* Center aligns vertically */
+    width: 100%; /* Full width */
+  }
+
+  .amount {
+    margin-left: auto; /* Pushes Amount to the right */
+  }
+
+  .arrowRed {
+    color: red;
+    margin-left: 0.5rem;
+  }
+  
+  .arrowGreen {
+    color: green;
+    margin-left: 0.5rem;
+  }
+}
+
+
+.buttonGroup {
+  display: flex;
+  justify-content: space-between;
+  margin: 1rem 0; // Add space above and below the button group
+}
+
+.filterBtn {
+  padding: 0.5rem 1rem;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  flex: 1; // Make buttons stretch to fill space
+  margin: 0 0.5rem; // Add margin between buttons
+}
+
+.filterBtn:hover {
+  background-color: #0056b3; // Darken on hover
 }

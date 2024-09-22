@@ -4,34 +4,6 @@ import styles from "./landingPage.module.scss";
 const LandingPage = () => {
   return (
     <>
-      {/* Navigation Bar */}
-      <header className={styles.navbar}>
-        <div className={styles.navContainer}>
-          <div className={styles.logo}>
-            <Link to="/">
-              <img src="/crypto.svg" alt="Crypto Logo" className={styles.logoImage} />
-              CryptoWallet
-            </Link>
-          </div>
-          <nav>
-            <ul className={styles.navLinks}>
-              <li>
-                <Link to="/">Home</Link>
-              </li>
-              <li>
-                <a href="#about">About</a>
-              </li>
-              <li>
-                <a href="#team">Team</a>
-              </li>
-              <li>
-                <Link to="/auth">Login</Link>
-              </li>
-            </ul>
-          </nav>
-        </div>
-      </header>
-
       {/* Main Content Container */}
       <div className={styles.contentContainer}>
         {/* Left Side */}

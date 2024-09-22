@@ -1,0 +1,83 @@
+.aboutPage {
+  background-color: var(--background);
+}
+
+.contentContainer {
+  padding: 20px;
+}
+
+/* Centered Heading and Description */
+.centeredContainer {
+  text-align: center;
+  margin-bottom: 40px;
+
+  h2 {
+    color: var(--text);
+    font-size: 32px; /* Increased font size */
+    text-transform: uppercase;
+    letter-spacing: 1px; /* Slightly increased letter spacing */
+    font-weight: bold; /* Added font weight for emphasis */
+
+    span {
+      color: var(--accent);
+    }
+  }
+
+  p {
+    color: var(--ye-color-light);
+    font-size: 20px;
+    line-height: 1.6; /* Increased line height for readability */
+    margin-top: 20px;
+    max-width: 800px; /* Added max width for text block */
+    margin-left: auto; /* Center the paragraph */
+    margin-right: auto; /* Center the paragraph */
+  }
+}
+
+/* Flexbox for Image and Text Sections */
+.row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Left Side - Image */
+.imgBox {
+  flex: 0 0 50%;
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+
+  img {
+    width: 100%;
+    max-width: 400px;
+    animation: float 2s ease-in-out infinite;
+    border-radius: 10px; /* Added rounded corners */
+  }
+}
+
+/* Right Side - Text Content */
+.detailBox {
+  flex: 0 0 50%;
+  text-align: center;
+  padding: 20px;
+
+  h3 {
+    font-size: 30px;
+    color: var(--text);
+    margin-bottom: 20px;
+  }
+
+  p {
+    color: var(--ye-color-light);
+    margin-bottom: 20px;
+    line-height: 1.6; /* Increased line height for readability */
+  }
+}
+
+/* Floating Animation */
+@keyframes float {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+  100% { transform: translateY(0); }
+}
