@@ -18,7 +18,7 @@ const Team = () => {
                   <img src="/path/to/team-1.jpg" alt="Team member 1" />
                 </div>
                 <div className={styles.detailBox}>
-                  <h5>Joseph Brown</h5>
+                  <h5>Bala Shashi</h5>
                   <p>Marketing Head</p>
                 </div>
                 <div className={styles.socialContainer}>
@@ -40,7 +40,7 @@ const Team = () => {
                   <img src="/path/to/team-2.jpg" alt="Team member 2" />
                 </div>
                 <div className={styles.detailBox}>
-                  <h5>Nancy White</h5>
+                  <h5>Ayush</h5>
                   <p>Design Head</p>
                 </div>
                 <div className={styles.socialContainer}>
@@ -62,7 +62,7 @@ const Team = () => {
                   <img src="/path/to/team-3.jpg" alt="Team member 3" />
                 </div>
                 <div className={styles.detailBox}>
-                  <h5>Mark Johnson</h5>
+                  <h5>Rohit Kumar</h5>
                   <p>Development Lead</p>
                 </div>
                 <div className={styles.socialContainer}>
@@ -84,7 +84,7 @@ const Team = () => {
                   <img src="/path/to/team-4.jpg" alt="Team member 4" />
                 </div>
                 <div className={styles.detailBox}>
-                  <h5>Susan Lee</h5>
+                  <h5>Sutirtho</h5>
                   <p>Content Strategist</p>
                 </div>
                 <div className={styles.socialContainer}>

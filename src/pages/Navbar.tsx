@@ -8,7 +8,7 @@ const Navbar = () => {
         <div className={styles.logo}>
           <Link to="/">
             <img src="/crypto.svg" alt="Crypto Logo" className={styles.logoImage} />
-            CryptoWallet
+            ReptoWallet
           </Link>
         </div>
         <nav>

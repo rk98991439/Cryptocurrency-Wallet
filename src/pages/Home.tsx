@@ -12,22 +12,47 @@ const Home = () => {
   const [receivedAmount, setReceivedAmount] = useState("");
   const [transactions, setTransactions] = useState([]);
   const [filter, setFilter] = useState("all");
+  const [walletBalance, setWalletBalance] = useState(1000); // Set initial balance to 1000
 
-  const handleSendCrypto = () => {
+  const handleSendCrypto = async () => {
+    const amountToSend = Number(sentAmount);
+    
+    if (amountToSend > walletBalance) {
+      alert("Insufficient balance to complete this transaction.");
+      return;
+    }
+  
     const timestamp = new Date().toLocaleString();
     const transaction = {
       address: walletAddress,
       sentAmount,
       receivedAmount,
       timestamp,
+      cryptoType,
     };
-    // Add new transaction at the beginning of the array
+  
     setTransactions([transaction, ...transactions]);
+    setWalletBalance(walletBalance - amountToSend);
     console.log(`Sending ${sentAmount} ${cryptoType} to ${walletAddress}`);
-    // Clear input fields after sending
+  
     setWalletAddress("");
     setSentAmount("");
+  
+    // Save transaction to server
+    try {
+      await fetch('/api/saveTransaction', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(transaction),
+      });
+    } catch (error) {
+      console.error("Error saving transaction:", error);
+    }
   };
+  
+  
 
   const filteredTransactions = transactions.filter(txn => {
     if (filter === "sent") return txn.sentAmount; 
@@ -38,7 +63,7 @@ const Home = () => {
   return (
     <div className={styles.homePage}>
       <h1 className={styles.greet}>
-        Welcome <span>{currentUser?.username}</span>, to our WEBSITE.
+        Welcome <span>{currentUser?.username}</span>, to Repto.
       </h1>
 
       <div className={styles.content}>
@@ -46,9 +71,9 @@ const Home = () => {
           <h2>Payment Transaction Info</h2>
           
           <div className={styles.buttonGroup}>
-            <button onClick={() => setFilter("all")} className={styles.filterBtn}>Show All</button>
-            <button onClick={() => setFilter("sent")} className={styles.filterBtn}>Only Sent</button>
-            <button onClick={() => setFilter("received")} className={styles.filterBtn}>Only Received</button>
+            <button onClick={() => setFilter("all")} className={styles.filterBtn}>All</button>
+            <button onClick={() => setFilter("sent")} className={styles.filterBtn}>Sent</button>
+            <button onClick={() => setFilter("received")} className={styles.filterBtn}>Received</button>
           </div>
 
           <input 
@@ -57,31 +82,31 @@ const Home = () => {
             className={styles.searchBar} 
           />
           <ul className={styles.transactionList}>
-            {filteredTransactions.map((txn, index) => (
-              <li key={index} className={styles.transactionItem}>
-                <div className={styles.transactionDetails}>
-                  <p>Wallet Address: {txn.address}</p>
-                  <p className={styles.transactionInfo}>
-                    Type: {cryptoType}
-                    <span className={styles.amount}>
-                      Amount:
-                      {txn.receivedAmount ? (
-                        <span className={styles.arrowGreen}> +{txn.receivedAmount} </span>
-                      ) : txn.sentAmount ? (
-                        <span className={styles.arrowRed}> -{txn.sentAmount} </span>
-                      ) : null}
-                    </span>
-                  </p>
-                  <p style={{ margin: 0 }}>Timestamp: {txn.timestamp}</p>
-                </div>
-              </li>
-            ))}
-          </ul>
+  {filteredTransactions.map((txn, index) => (
+    <li key={index} className={styles.transactionItem}>
+      <div className={styles.transactionDetails}>
+        <p>Wallet Address: {txn.address}</p>
+        <p className={styles.transactionInfo}>
+          Type: {txn.cryptoType} {/* Use the cryptoType from the transaction */}
+          <span className={styles.amount}>
+            Amount:
+            {txn.receivedAmount ? (
+              <span className={styles.arrowGreen}> +{txn.receivedAmount} </span>
+            ) : txn.sentAmount ? (
+              <span className={styles.arrowRed}> -{txn.sentAmount} </span>
+            ) : null}
+          </span>
+        </p>
+        <p style={{ margin: 0 }}>Timestamp: {txn.timestamp}</p>
+      </div>
+    </li>
+  ))}
+</ul>
         </div>
 
         <div className={styles.wallet}>
           <h2>Current Balance</h2>
-          <p>${currentUser?.walletBalance || 0}</p>
+          <p>₿ {walletBalance}</p> {/* Display updated balance */}
 
           <div className={styles.cryptoSelection}>
             <label htmlFor="cryptoType">Choose Cryptocurrency:</label>
