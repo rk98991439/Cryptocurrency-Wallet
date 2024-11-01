@@ -2,143 +2,195 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-start; /* Align items at the start */
-  background-color: #f5f5f5;
-  padding: 1rem; /* Add padding to the entire page */
-  height: 100vh; /* Set height to full viewport */
-}
-
-.greet {
-  font-size: 2rem;
-  font-weight: 700;
-  margin: 0; /* Remove margins for consistency */
-  text-align: center;
-
-  span {
-    color: #007bff;
-  }
-}
-
-.content {
-  display: flex;
-  width: 100%;
-  max-width: 1200px; // Adjust as needed
-  margin-top: 1rem; /* Space between greeting and content */
-}
-
-.contacts, .wallet {
-  flex: 1;
-  background-color: #fff;
   padding: 1rem;
-  border-radius: 5px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  margin: 0 0.5rem; /* Adjust space between the two sections */
-}
+  min-height: 100vh;
+  background: url('./public/image.png') no-repeat center center fixed;
+  background-size: cover;
+  box-sizing: border-box;
 
-.searchBar {
-  width: 100%;
-  padding: 0.5rem;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-}
+  .greet {
+    font-size: 1.5rem;
+    font-weight: 700;
+    text-align: center;
+    color: white;
 
-.cryptoSelection {
-  margin: 1rem 0;
-}
+    span {
+      color: #007bff;
+    }
 
-.transactionForm {
-  display: flex;
-  flex-direction: column;
-  margin-top: 1rem;
-}
-
-.transactionForm input {
-  margin-bottom: 0.5rem;
-  padding: 0.5rem;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-}
-
-.sendBtn {
-  padding: 0.5rem;
-  background-color: #007bff;
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.logoutBtn {
-  margin-top: 1rem;
-  padding: 0.5rem 1rem;
-  background-color: #007bff;
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.transactionList {
-  list-style-type: none;
-  padding: 0;
-}
-
-.transactionItem {
-  background-color: #f0f8ff;
-  padding: 1rem;
-  margin: 0.5rem 0;
-  border-radius: 5px;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-}
-
-.transactionDetails {
-  display: flex;
-  flex-direction: column;
-
-  p {
-    margin: 0; // Remove extra margin for no space above/below
+    @media (min-width: 768px) {
+      font-size: 2rem;
+    }
   }
 
-  .transactionInfo {
+  .content {
     display: flex;
-    justify-content: space-between; /* Aligns Type and Amount to edges */
-    align-items: center; /* Center aligns vertically */
-    width: 100%; /* Full width */
+    flex-direction: column;
+    width: 100%;
+    max-width: 1200px;
+    gap: 1rem;
+    margin-top: 1rem;
+
+    @media (min-width: 768px) {
+      flex-direction: row;
+      gap: 2rem; // Increased gap between columns
+    }
   }
 
-  .amount {
-    margin-left: auto; /* Pushes Amount to the right */
+  .contacts, .wallet {
+    flex: 1;
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 1.5rem; // Increased padding for better spacing
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin: 0.5rem;
+
+    @media (min-width: 768px) {
+      margin: 0;
+    }
   }
 
-  .arrowRed {
-    color: red;
-    margin-left: 0.5rem;
+  .searchBar {
+    width: 100%;
+    padding: 0.75rem; // Increased padding for better usability
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 1rem; // Added margin for separation
   }
-  
-  .arrowGreen {
-    color: green;
-    margin-left: 0.5rem;
+
+  .cryptoSelection {
+    margin: 1.5rem 0; // Increased margins for better spacing
   }
-}
 
+  .transactionForm {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem; // Increased gap for better spacing
+    margin-top: 1rem;
 
-.buttonGroup {
-  display: flex;
-  justify-content: space-between;
-  margin: 1rem 0; // Add space above and below the button group
-}
+    input {
+      padding: 0.75rem; // Increased padding for better usability
+      border: 1px solid var(--secondary);
+      border-radius: 5px;
+    }
+  }
 
-.filterBtn {
-  padding: 0.5rem 1rem;
-  background-color: #007bff;
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  flex: 1; // Make buttons stretch to fill space
-  margin: 0 0.5rem; // Add margin between buttons
-}
+  .sendBtn, .logoutBtn, .filterBtn {
+    padding: 0.75rem; // Increased padding for buttons
+    background-color: var(--primary);
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
 
-.filterBtn:hover {
-  background-color: #0056b3; // Darken on hover
+  .logoutBtn {
+    margin-top: 1rem;
+    padding: 0.75rem 1.5rem; // Increased padding for buttons
+  }
+
+  .transactionList {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem; // Maintain gap for better spacing
+    max-height: 600px; // Set a fixed height for the list
+    overflow-y: auto; // Enable scrolling
+  }
+
+  .transactionItem {
+    background-color: var(--accent);
+    padding: 1.5rem; // Increased padding for better visibility
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  }
+
+  .transactionDetails {
+    display: flex;
+    flex-direction: column;
+
+    .transactionInfo {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+    }
+
+    .amount {
+      margin-left: auto;
+    }
+
+    .arrowRed {
+      color: red;
+      margin-left: 0.5rem;
+    }
+
+    .arrowGreen {
+      color: green;
+      margin-left: 0.5rem;
+    }
+  }
+
+  .buttonGroup {
+    display: flex;
+    gap: 1rem; // Maintain gap for better spacing
+    margin: 1rem 0;
+
+    button {
+      flex: 1; // Make buttons take equal space
+      min-width: 90px; // Optional: set a minimum width for buttons
+      padding: 0.75rem; // Maintain padding for better usability
+      background-color: var(--primary);
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+
+      &:hover {
+        background-color: var(--primary-hover);
+      }
+    }
+  }
+
+  .popupOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+  }
+
+  .popupContent {
+    background: #fff;
+    padding: 1.5rem; // Increased padding for better visibility
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+    text-align: center;
+    max-width: 90%;
+    width: 400px;
+  }
+
+  .popupContent button {
+    margin-top: 1rem;
+    padding: 0.5rem 1rem;
+    background-color: var(--primary);
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .sendBtn, .logoutBtn, .filterBtn {
+      padding: 0.75rem; // Maintain padding for smaller screens
+    }
+  }
 }

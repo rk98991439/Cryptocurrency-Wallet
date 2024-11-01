@@ -24,11 +24,11 @@ const About = () => {
           </div>
 
           <div className={styles.detailBox}>
-            <h3 style={{ color: 'var(--text)' }}>We Are crypto wallet</h3>
-            <p style={{ color: 'var(--ye-color-light)' }}>
+            <h3>We Are Crypto Wallet</h3>
+            <p>
               A crypto wallet doesn't technically hold a user's coins. Instead, it holds the key to their coins, which are stored on public blockchain networks. To perform various transactions, a user needs to verify their wallet address via a private key that comes in a set of specific codes.
             </p>
-            <p style={{ color: 'var(--ye-color-light)' }}>
+            <p>
               Crypto wallets are designed to store your private key, keeping your crypto accessible at all times. They also allow you to send, receive, and spend cryptocurrencies like Bitcoin and Ethereum.
             </p>
           </div>

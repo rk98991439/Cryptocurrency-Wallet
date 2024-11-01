@@ -1,8 +1,13 @@
 .aboutPage {
   background-color: var(--background);
+  min-height: 100vh; /* Ensures the background covers the entire viewport height */
+  display: flex; /* Enables flexbox for centering content */
+  flex-direction: column; /* Stacks children vertically */
 }
 
+/* Adjust contentContainer to center content while covering full height */
 .contentContainer {
+  flex: 1; /* Allows this to grow and fill available space */
   padding: 20px;
 }
 
@@ -39,6 +44,12 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap; /* Allow wrapping on smaller screens */
+
+  @media (max-width: 768px) {
+    flex-direction: column; /* Stack items vertically on small screens */
+    text-align: center; /* Center text on small screens */
+  }
 }
 
 /* Left Side - Image */

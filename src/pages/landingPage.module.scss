@@ -5,21 +5,13 @@
   background-color: var(--background); /* Set background color for the whole container */
 }
 
-/* Floating Animation */
-@keyframes float {
-  0% { transform: translateY(0); }
-  50% { transform: translateY(-30px); }
-  100% { transform: translateY(0); }
-}
-
 /* Landing Page Main Styles */
 .landingPage {
-  flex: 0 0 60%; /* 40% for the left side */
+  flex: 0 0 60%; /* 60% for the left side */
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center; /* Center content vertically */
-  background-color: var(--background); /* Set left background color */
   padding: 10px; /* Add padding as needed */
   text-align: center; /* Center text */
 }
@@ -37,7 +29,7 @@
   padding: var(--ye-button-padding);
   font-size: var(--ye-font-size-normal);
   background-color: var(--primary);
-  cursor: var(--ye-button-cursor);
+  cursor: pointer; /* Use pointer for cursor */
   height: 3rem;
   width: 6rem;
   border: 2px solid var(--primary);
@@ -47,30 +39,50 @@
   &:hover {
     color: var(--primary);
     background-color: var(--primary-hover);
-    transition: all 0.3s ease-in-out;
   }
 }
 
 .sliderSection {
-  flex: 0 0 30%; /* 60% for the right side */
+  flex: 0 0 40%; /* 40% for the right side */
   display: flex;
   align-items: center;
   justify-content: center; /* Center content horizontally */
-  background-color: var(--background); /* Set right background color */
   padding: 45px 0 145px 0;
   box-sizing: border-box;
 }
 
-.imgBox img {
-  width: 100%; /* Adjust the size as needed, increase for larger image */
+.imgBox {
+  width: 100%; /* Make sure image box takes full width */
   max-width: 400px; /* Maximum size for responsiveness */
+}
+
+.imgBox img {
+  width: 100%; /* Responsive image */
   animation: float 2s ease-in-out infinite; /* Apply float animation */
 }
 
-.bouncingImage {
-  animation: bounce 1s infinite; /* Original bounce animation can be kept if needed */
+/* Floating Animation */
+@keyframes float {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-30px); }
+  100% { transform: translateY(0); }
 }
 
-.detailBox {
-  text-align: center; /* Center text in detail box */
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+  .landingPage {
+    flex: 1; /* Allow more space on small screens */
+  }
+
+  .sliderSection {
+    flex: 1; /* Allow more space on small screens */
+  }
+
+  .authBtn {
+    width: 80%; /* Make button wider on smaller screens */
+  }
+
+  .title {
+    font-size: var(--ye-font-size-large); /* Adjust title size for small screens */
+  }
 }

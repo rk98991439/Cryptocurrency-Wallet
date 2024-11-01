@@ -1,15 +1,14 @@
-.wrapper {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  width: 100%;
-  background-color: var(--background);
-}
 .teamSection {
   padding: 60px 0;
   background-color: var(--background);
   color: var(--text);
+}
+
+.contentContainer {
+  padding: 20px;
+  padding-top: 20px;
+  padding-bottom: 32%;
+  padding-left: 20px;
 }
 
 .headingContainer {
@@ -48,8 +47,8 @@
 
   .imgBox {
     img {
-      width: 100%;
-      border-radius: 10px;
+      width: 75%;
+      border-radius: 75%;
     }
   }
 
@@ -59,14 +58,13 @@
       margin: 15px 0; /* Increased margin for spacing */
       color: black; /* Changed color to black */
     }
-  
+
     p {
       font-size: 16px;
       color: black; /* Changed color to black */
       margin: 10px 0; /* Added margin for spacing */
     }
   }
-  
 
   .socialContainer {
     margin-top: 10px;
@@ -84,5 +82,36 @@
         transform: scale(1.1);
       }
     }
+  }
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 1200px) {
+  .box {
+    flex: 0 0 calc(33.33% - 20px); /* 3 boxes per row */
+  }
+
+  .headingContainer h2 {
+    font-size: 30px; /* Slightly smaller font size */
+  }
+}
+
+@media (max-width: 900px) {
+  .box {
+    flex: 0 0 calc(50% - 20px); /* 2 boxes per row */
+  }
+
+  .headingContainer h2 {
+    font-size: 28px; /* Slightly smaller font size */
+  }
+}
+
+@media (max-width: 600px) {
+  .box {
+    flex: 0 0 100%; /* 1 box per row */
+  }
+
+  .headingContainer h2 {
+    font-size: 24px; /* Smaller font size */
   }
 }
