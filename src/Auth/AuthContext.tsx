@@ -99,7 +99,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     }
 
     console.log(data.username);
-    console.log(data.password);
+    console.log("Password received");
   };
 
   //! LOGIN
