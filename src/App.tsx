@@ -6,6 +6,7 @@ import LandingPage from "./pages/LandinPage"; // Fixed import name
 import Home from "./pages/Home";
 import About from "./pages/About"; // Import About page
 import Team from "./pages/Team"; // Import Team page
+
 import "./App.scss";
 
 const App = () => {
@@ -26,6 +27,7 @@ const App = () => {
           <Route path="/home" element={<Home />} />
           <Route path="/about" element={<About />} /> {/* About Route */}
           <Route path="/team" element={<Team />} /> {/* Team Route */}
+
         </Routes>
       </AuthProvider>
     </Router>

@@ -1,49 +1,69 @@
 import { useState, useContext } from "react";
 import clsx from "clsx";
 import styles from "./Auth.module.scss";
-
 import { AuthContext } from "./AuthContext";
+import { generateWalletKeys } from "../Contract/generateWalletKeys";
+import { saveAs } from "file-saver";
 
 const Auth = () => {
   const [isRightPanelActive, setIsRightPanelActive] = useState(false);
-  //! states for signup form
+
+  // States for signup form
   const [signUpName, setSignUpName] = useState("");
   const [signUpEmail, setSignUpEmail] = useState("");
   const [signUpPassword, setSignUpPassword] = useState("");
 
-  //! states for login form
+  // States for login form
   const [loginEmail, setLoginEmail] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
 
-  //! consuming the context
-
+  // Consuming the context
   const context = useContext(AuthContext);
-
   const { signup, login } = context!;
 
   const handleSignupSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    //! handling the validation OF THE DATA coming from the form
+
+    // Validate input data
     if (!signUpName || !signUpEmail || !signUpPassword) {
       alert("All fields are required.");
       return;
     }
 
-    //! Email validation regex
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(signUpEmail)) {
       alert("Invalid email format.");
       return;
     }
 
-    //! calling the signup function from the context
+    // Generate wallet keys (including both private and public keys)
+    const { publicKey, privateKey } = generateWalletKeys();
+
+    // Call signup function
     signup({
       username: signUpEmail,
       password: signUpPassword,
       name: signUpName,
+      publicKey,
     });
 
-    //! clearing the form fields
+    // Create user data for download
+    const userData = {
+      name: signUpName,
+      email: signUpEmail,
+      publicKey,
+      privateKey, // Including private key in JSON file
+    };
+
+    // Convert the user data to a JSON string
+    const blob = new Blob([JSON.stringify(userData, null, 2)], {
+      type: "application/json",
+    });
+
+    // Save the user data as a JSON file with the user's name
+    saveAs(blob, `${signUpName.replace(/\s+/g, "_")}-account.json`);
+
+    // Clear fields
     setSignUpName("");
     setSignUpEmail("");
     setSignUpPassword("");
@@ -51,26 +71,20 @@ const Auth = () => {
 
   const handleLoginSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    //! handling the validation OF THE DATA coming from the form
+
     if (!loginEmail || !loginPassword) {
       alert("All fields are required.");
       return;
     }
 
-    //! Email validation regex
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(loginEmail)) {
       alert("Invalid email format.");
       return;
     }
 
-    //! calling the login function from the context
-    login({
-      username: loginEmail,
-      password: loginPassword,
-    });
+    login({ username: loginEmail, password: loginPassword });
 
-    //! clearing the form fields
     setLoginEmail("");
     setLoginPassword("");
   };
@@ -91,18 +105,19 @@ const Auth = () => {
         })}
         id="container"
       >
+        {/* Sign Up Form */}
         <div className={clsx(styles.formContainer, styles.signUpContainer)}>
           <form onSubmit={handleSignupSubmit} className={styles.loginContainer}>
             <h1 className={styles.signupTitle}>Create Account</h1>
             <div className={styles.signUpSocialContainer}>
               <a href="#" className={styles.social}>
-                <img src="./github.svg" alt="github-icon" />{" "}
+                <img src="./github.svg" alt="github-icon" />
               </a>
               <a href="#" className={styles.social}>
-                <img src="./linkedin.svg" alt="github-icon" />{" "}
+                <img src="./linkedin.svg" alt="github-icon" />
               </a>
               <a href="#" className={styles.social}>
-                <img src="./twitter.svg" alt="github-icon" />{" "}
+                <img src="./twitter.svg" alt="github-icon" />
               </a>
             </div>
             <input
@@ -132,18 +147,19 @@ const Auth = () => {
           </form>
         </div>
 
+        {/* Sign In Form */}
         <div className={clsx(styles.formContainer, styles.signInContainer)}>
           <form onSubmit={handleLoginSubmit} className={styles.loginContainer}>
             <h1 className={styles.loginTitle}>Login</h1>
             <div className={styles.socialContainer}>
               <a href="#" className={styles.social}>
-                <img src="./github.svg" alt="github-icon" />{" "}
+                <img src="./github.svg" alt="github-icon" />
               </a>
               <a href="#" className={styles.social}>
-                <img src="./linkedin.svg" alt="github-icon" />{" "}
+                <img src="./linkedin.svg" alt="github-icon" />
               </a>
               <a href="#" className={styles.social}>
-                <img src="./twitter.svg" alt="github-icon" />{" "}
+                <img src="./twitter.svg" alt="github-icon" />
               </a>
             </div>
             <input
@@ -166,6 +182,7 @@ const Auth = () => {
           </form>
         </div>
 
+        {/* Overlay panel for switching */}
         <div className={styles.overlayContainer}>
           <div className={styles.overlay}>
             <div className={clsx(styles.overlayPanel, styles.overlayLeft)}>
@@ -182,9 +199,9 @@ const Auth = () => {
               </button>
             </div>
             <div className={clsx(styles.overlayPanel, styles.overlayRight)}>
-              <h1 className={styles.welcomeText}> Hello, Friend!</h1>
+              <h1 className={styles.welcomeText}>Hello, Friend!</h1>
               <p className={styles.welcomePara}>
-                Enter your personal details and start journey with us
+                Enter your personal details and start your journey with us
               </p>
               <button
                 className={styles.ghost}

@@ -1,7 +1,9 @@
 import styles from "./home.module.scss";
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 import { AuthContext } from "../Auth/AuthContext";
+import { getFirestore, doc, getDoc } from "firebase/firestore";
 
+// Popup component
 const Popup = ({ message, onClose }) => (
   <div className={styles.popupOverlay}>
     <div className={styles.popupContent}>
@@ -14,6 +16,8 @@ const Popup = ({ message, onClose }) => (
 const Home = () => {
   const { currentUser, logout } = useContext(AuthContext);
 
+  // State management
+  const [publicKey, setPublicKey] = useState("your-public-key-here");
   const [cryptoType, setCryptoType] = useState("Bitcoin");
   const [walletAddress, setWalletAddress] = useState("");
   const [sentAmount, setSentAmount] = useState("");
@@ -23,36 +27,68 @@ const Home = () => {
   const [showPopup, setShowPopup] = useState(false);
   const [popupMessage, setPopupMessage] = useState("");
 
+  const db = getFirestore();
+
+  // Fetch data from Firestore
+  useEffect(() => {
+    if (currentUser?.email) {
+      const fetchUserData = async () => {
+        try {
+          const userDocRef = doc(db, "users", currentUser.email);
+          const userDoc = await getDoc(userDocRef);
+
+          if (userDoc.exists()) {
+            const userData = userDoc.data();
+            setPublicKey(userData?.publicKey || "your-public-key-here");
+          } else {
+            console.log("No such document for this email!");
+          }
+        } catch (error) {
+          console.error("Error fetching user data: ", error);
+        }
+      };
+
+      fetchUserData();
+    }
+  }, [currentUser, db]);
+
+  const handleCopyPublicKey = () => {
+    navigator.clipboard.writeText(publicKey)
+      .then(() => {
+        setPopupMessage("Public key copied to clipboard!");
+        setShowPopup(true);
+      })
+      .catch(err => {
+        console.error("Failed to copy: ", err);
+        setPopupMessage("Failed to copy public key.");
+        setShowPopup(true);
+      });
+  };
+
   const handleSendCrypto = async () => {
     const amountToSend = Number(sentAmount);
-
     if (amountToSend > walletBalance) {
       setPopupMessage("Insufficient balance to complete this transaction.");
       setShowPopup(true);
       return;
     }
 
-    const timestamp = new Date().toLocaleString();
     const transaction = {
       address: walletAddress,
       sentAmount,
-      receivedAmount: "", // Assuming this field is needed but not set anywhere
-      timestamp,
+      timestamp: new Date().toLocaleString(),
       cryptoType,
     };
 
     setTransactions([transaction, ...transactions]);
     setWalletBalance(walletBalance - amountToSend);
-
     setWalletAddress("");
     setSentAmount("");
 
     try {
       await fetch('/api/saveTransaction', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(transaction),
       });
     } catch (error) {
@@ -66,12 +102,17 @@ const Home = () => {
     return true;
   });
 
+  if (!currentUser) {
+    return <div>Loading...</div>;
+  }
+
   return (
     <div className={styles.backgroundSection}>
       <div className={styles.homePage}>
         <h1 className={styles.greet}>
-          Hi, <span>{currentUser?.username}</span>! Welcome back.
+          Hi, <span>{currentUser.username}</span>! Welcome back.
         </h1>
+        {/* Render transactions and wallet info */}
 
         <div className={styles.content}>
           <div className={styles.contacts}>
@@ -109,10 +150,17 @@ const Home = () => {
                 </li>
               ))}
             </ul>
-
           </div>
 
           <div className={styles.wallet}>
+            <h2>Your Account</h2>
+            <p>
+              Public Key: <span className={styles.publicKey}>{publicKey}</span>
+              <button onClick={handleCopyPublicKey} className={styles.copyBtn}>
+                 📋
+              </button>
+            </p>
+
             <h2>Current Balance</h2>
             <p>₿ {walletBalance}</p>
 
